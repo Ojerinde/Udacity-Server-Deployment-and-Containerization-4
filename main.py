@@ -34,8 +34,6 @@ def _logger():
     log.addHandler(stream_handler)
     return log
 
-# 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
-# aws ssm put-parameter --name JWT_SECRET --overwrite --value "ojerindejoel" --type SecureString
 
 LOG = _logger()
 LOG.debug("Starting with log level: %s" % LOG_LEVEL )
