@@ -51,7 +51,7 @@ def require_jwt(function):
         token = str.replace(str(data), 'Bearer ', '')
         try:
             jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
-        except: # pylint: disable=bare-except
+        except: # pylint: disable=bare-except, okay
             abort(401)
 
         return function(*args, **kws)
@@ -83,7 +83,6 @@ def auth():
 
     return jsonify(token=_get_jwt(user_data).decode('utf-8'))
 
-# eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU2NTkwMzQsIm5iZiI6MTY2NDQ0OTQzNCwiZW1haWwiOiJvamVyaW5kZWpvZWwifQ.bmLpLVrcbxKeMkELrBDxgmTcozgvT58KKP9_BN81mOE
 
 @APP.route('/contents', methods=['GET'])
 def decode_jwt():
